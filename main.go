@@ -21,6 +21,9 @@ func main() {
 	router := gin.Default()
 
 	router.StaticFile("/", "public/index.html")
+	router.StaticFile("/index.html", "public/index.html")
+	router.Static("/css/", "./public/css")
+	router.Static("/js/", "./public/js")
 	router.GET("/tasks", handlers.GetTasks(db))
 	router.PUT("/tasks", handlers.PutTask(db))
 	router.DELETE("/tasks/:id", handlers.DeleteTask(db))

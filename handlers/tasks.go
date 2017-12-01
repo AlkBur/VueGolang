@@ -30,6 +30,8 @@ func PutTask(db *sql.DB) gin.HandlerFunc {
 				"created": id,
 			})
 			// Handle any errors
+		}else{
+			c.JSON(422, gin.H{"error": err.Error()})
 		}
 	}
 }
@@ -45,6 +47,8 @@ func DeleteTask(db *sql.DB) gin.HandlerFunc {
 				"deleted": id,
 			})
 			// Handle errors
+		}else {
+			c.JSON(422, gin.H{"error": err.Error()})
 		}
 	}
 }
